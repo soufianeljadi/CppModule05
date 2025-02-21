@@ -4,7 +4,7 @@
 int main()
 {
     Bureaucrat b("Ben10", 1);
-    std::cout << b.getName() << " has Grade : " << b.getGrade() << std::endl;
+    std::cout << b << std::endl;
 
     try
     {
@@ -15,8 +15,8 @@ int main()
         std::cout << e.what() << std::endl;
     }
 
-    std::cout << b.getName() << " has Grade : " << b.getGrade() << std::endl;
+    std::cout << b << std::endl;
     b.decrementGrade();
-    std::cout << b.getName() << " has Grade : " << b.getGrade() << std::endl;
+    std::cout << b << std::endl;
     return 0;
 }
