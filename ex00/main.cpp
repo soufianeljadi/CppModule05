@@ -3,29 +3,29 @@
 
 int main()
 {
-    Bureaucrat b("Ben10", 1);
-    std::cout << b << std::endl;
+    try
+    {
+        Bureaucrat b("Ben10", 160 );
+        std::cout << b << std::endl;
+    }
+    catch (std::exception & e)
+    {
+        std::cout << e.what() << std::endl;
+    }
 
     try
     {
+        Bureaucrat b("Ben10", 2);
+        std::cout << b << std::endl;
         b.incrementGrade();
+        std::cout << b << std::endl;
+        b.incrementGrade();
+        std::cout << b << std::endl;
     }
     catch (std::exception & e)
     {
         std::cout << e.what() << std::endl;
     }
-
-    std::cout << b << std::endl;
-
-    try
-    {
-        b.decrementGrade();
-    }
-    catch (std::exception & e)
-    {
-        std::cout << e.what() << std::endl;
-    }
-    std::cout << b << std::endl;
     
     return 0;
 }

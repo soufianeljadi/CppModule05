@@ -31,6 +31,7 @@ RobotomyRequestForm & RobotomyRequestForm::operator=(const RobotomyRequestForm &
 }
 
 
+static int _auto = 0;
 void RobotomyRequestForm::execute(Bureaucrat const & executor) const
 {
     if (!this->getIsSigned())
@@ -38,8 +39,13 @@ void RobotomyRequestForm::execute(Bureaucrat const & executor) const
     if (executor.getGrade() > this->getGradeToExecute())
         throw AForm::GradeTooLowException();
     
-    std::cout << "Bzzzzzz... Bzzzzzz... Bzzzzzz..." << std::endl;
-    std::cout << this->_target << " has been robotomized successfully 50% of the time." << std::endl;
+    if (_auto++ % 2)
+    {
+        std::cout << "Bzzzzzz... Bzzzzzz... Bzzzzzz..." << std::endl;
+        std::cout << this->_target << " has been robotomized successfully 50% of the time." << std::endl;   
+    }
+	else
+		std::cout << "Robotomy failed" << std::endl;
 }
 
 std::string RobotomyRequestForm::getTarget() const

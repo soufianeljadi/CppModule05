@@ -9,6 +9,7 @@ class Bureaucrat
         std::string const _name;
         int _grade;
     public:
+        Bureaucrat();
         Bureaucrat(std::string const name, int grade);
         Bureaucrat(Bureaucrat const & src);
         Bureaucrat & operator=(Bureaucrat const & src);

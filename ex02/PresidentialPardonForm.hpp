@@ -12,12 +12,11 @@ class PresidentialPardonForm : public AForm
         PresidentialPardonForm();
         PresidentialPardonForm(std::string target);
         PresidentialPardonForm(const PresidentialPardonForm & src);
+        PresidentialPardonForm & operator=(const PresidentialPardonForm & rhs);
         ~PresidentialPardonForm();
 
         std::string getTarget() const;
         
-        PresidentialPardonForm & operator=(const PresidentialPardonForm & rhs);
-
         void execute(Bureaucrat const & executor) const;
 };
 

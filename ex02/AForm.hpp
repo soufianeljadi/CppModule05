@@ -2,8 +2,6 @@
 # define AFORM_HPP
 
 #include "Bureaucrat.hpp"
-#include <iostream>
-
 
 class Bureaucrat;
 class AForm
@@ -18,7 +16,7 @@ class AForm
         AForm();
         AForm(std::string name, int gradeToSign, int gradeToExecute);
         AForm(const AForm & src);
-        ~AForm();
+        virtual ~AForm();
         
         AForm & operator=(const AForm & rhs);
 
@@ -27,13 +25,15 @@ class AForm
         int getGradeToSign() const;
         int getGradeToExecute() const;
 
+        void beSigned(Bureaucrat & bureaucrat);
+        virtual void execute(Bureaucrat const & executor) const = 0;
+
         class GradeTooHighException : public std::exception
         {
             public:
                 const char * what() const throw();
 
         };
-
         class GradeTooLowException : public std::exception
         {
             public:
@@ -44,9 +44,6 @@ class AForm
             public:
                 const char * what() const throw();
         };
-
-        void beSigned(Bureaucrat & bureaucrat);
-        virtual void execute(Bureaucrat const & executor) const = 0;
 };
 
 

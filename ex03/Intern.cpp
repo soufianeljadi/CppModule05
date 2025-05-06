@@ -40,12 +40,15 @@ AForm * Intern::makeForm(std::string formName, std::string target)
     {
         case 0:
             form = new RobotomyRequestForm(target);
+            std::cout << "Intern creates " << form->getName() << std::endl;
             break;
         case 1:
             form = new PresidentialPardonForm(target);
+            std::cout << "Intern creates " << form->getName() << std::endl;
             break;
         case 2:
             form = new ShrubberyCreationForm(target);
+            std::cout << "Intern creates " << form->getName() << std::endl;
             break;
         default:
             throw FormNotFoundException();

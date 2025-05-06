@@ -1,5 +1,4 @@
 #include "Form.hpp"
-#include "Bureaucrat.hpp"
 
 Form::Form() : _name("Default"), _isSigned(false), _gradeToSign(150), _gradeToExecute(150)
 {
@@ -64,7 +63,12 @@ void Form::beSigned(Bureaucrat & bureaucrat)
 
 std::ostream & operator<<(std::ostream & o, Form const & i)
 {
-    o << "Form name: " << i.getName() << ", is signed: " << (i.getIsSigned() ? "yes" : "no") << ", grade to sign: " << i.getGradeToSign() << ", grade to execute: " << i.getGradeToExecute();
+    o << "Form name: " << i.getName() << ", is " ;
+    if(i.getIsSigned())
+        o <<  "signed ";
+    else
+        o << "not signed ";
+    o << "| grade to sign: " << i.getGradeToSign() << " | grade to execute: " << i.getGradeToExecute();
     return o;
 }
 
