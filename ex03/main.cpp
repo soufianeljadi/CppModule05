@@ -12,7 +12,7 @@ int main()
 
     try
     {
-        form = intern.makeForm("robotomy request", "Target1");
+        form = intern.makeForm("PresidentialPardonForm", "Target1");
         b.signForm(*form);
         b.executeForm(*form);
         delete form;
@@ -24,7 +24,7 @@ int main()
 
     try
     {
-        form = intern.makeForm("presidential pardon", "Target2");
+        form = intern.makeForm("RobotomyRequestForm", "Target2");
         b.signForm(*form);
         b.executeForm(*form);
         delete form;
@@ -36,7 +36,7 @@ int main()
 
     try
     {
-        form = intern.makeForm("shrubbery creation", "Target3");
+        form = intern.makeForm("ShrubberyCreationForm", "Target3");
         b.signForm(*form);
         b.executeForm(*form);
         delete form;

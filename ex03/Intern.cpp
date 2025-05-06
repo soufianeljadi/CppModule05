@@ -24,36 +24,37 @@ Intern & Intern::operator=(const Intern & rhs)
     return *this;
 }
 
+static AForm	*PresidentialForm(const std::string target)
+{
+	return (new PresidentialPardonForm(target));
+}
+
+static AForm	*RobotomyForm(const std::string target)
+{
+	return (new RobotomyRequestForm(target));
+}
+
+static AForm	*ShrubberyForm(const std::string target)
+{
+	return (new ShrubberyCreationForm(target));
+}
+
 AForm * Intern::makeForm(std::string formName, std::string target)
 {
-    AForm *form = NULL;
-    std ::string arr[3] = {"robotomy request", "presidential pardon", "shrubbery creation"};
-    int i = 0;
 
-    while (i < 3)
+    AForm *(*forms_pointer[])(const std::string target) = {&PresidentialForm, &RobotomyForm, &ShrubberyForm};
+	std::string forms[] = {"PresidentialPardonForm", "RobotomyRequestForm", "ShrubberyCreationForm"};
+
+    for (int i = 0; i < 3; i++)
     {
-        if (formName == arr[i])
-            break;
-        i++;
+        if (formName == forms[i])
+        {
+            std::cout << "Intern creates " << formName << std::endl;
+            return forms_pointer[i](target);
+        }
     }
-    switch (i)
-    {
-        case 0:
-            form = new RobotomyRequestForm(target);
-            std::cout << "Intern creates " << form->getName() << std::endl;
-            break;
-        case 1:
-            form = new PresidentialPardonForm(target);
-            std::cout << "Intern creates " << form->getName() << std::endl;
-            break;
-        case 2:
-            form = new ShrubberyCreationForm(target);
-            std::cout << "Intern creates " << form->getName() << std::endl;
-            break;
-        default:
-            throw FormNotFoundException();
-    }
-    return form;
+    throw FormNotFoundException();
+    return NULL;
 }
 
 const char * Intern::FormNotFoundException::what() const throw()
