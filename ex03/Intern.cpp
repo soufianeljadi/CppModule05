@@ -61,6 +61,7 @@ const char * Intern::FormNotFoundException::what() const throw()
 {
     return "Intern: Form not found";
 }
+
 std::ostream & operator<<(std::ostream & o, Intern const & src)
 {
     (void)src;
