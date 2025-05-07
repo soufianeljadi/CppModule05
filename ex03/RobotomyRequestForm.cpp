@@ -50,7 +50,12 @@ std::string RobotomyRequestForm::getTarget() const
 
 std::ostream & operator<<(std::ostream & o, RobotomyRequestForm const & src)
 {
-    o << "RobotomyRequestForm: " << src.getName() << ", target: " << src.getTarget() << ", is signed: " << src.getIsSigned() << ", grade to sign: " << src.getGradeToSign() << ", grade to execute: " << src.getGradeToExecute();
+    o << "RobotomyRequestForm: " << src.getName() << ", target: " << src.getTarget();
+    if(src.getIsSigned())
+        o <<  " signed ";
+    else
+        o << " not signed ";
+    o << "| grade to sign: " << src.getGradeToSign() << " | grade to execute: " << src.getGradeToExecute();
     return o;
 }
 

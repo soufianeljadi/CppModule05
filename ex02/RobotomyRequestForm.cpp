@@ -31,15 +31,14 @@ RobotomyRequestForm & RobotomyRequestForm::operator=(const RobotomyRequestForm &
 }
 
 
-static int _auto = 0;
 void RobotomyRequestForm::execute(Bureaucrat const & executor) const
 {
     if (!this->getIsSigned())
         throw AForm::FormNotSignedException();
     if (executor.getGrade() > this->getGradeToExecute())
         throw AForm::GradeTooLowException();
-    
-    if (_auto++ % 2)
+    srand(time(NULL));
+    if (rand() % 2 == 0)
     {
         std::cout << "Bzzzzzz... Bzzzzzz... Bzzzzzz..." << std::endl;
         std::cout << this->_target << " has been robotomized successfully 50% of the time." << std::endl;   
@@ -56,7 +55,12 @@ std::string RobotomyRequestForm::getTarget() const
 
 std::ostream & operator<<(std::ostream & o, RobotomyRequestForm const & src)
 {
-    o << "RobotomyRequestForm: " << src.getName() << ", target: " << src.getTarget() << ", is signed: " << src.getIsSigned() << ", grade to sign: " << src.getGradeToSign() << ", grade to execute: " << src.getGradeToExecute();
+    o << "RobotomyRequestForm: " << src.getName() << ", target: " << src.getTarget();
+    if(src.getIsSigned())
+        o <<  " signed ";
+    else
+        o << " not signed ";
+    o << "| grade to sign: " << src.getGradeToSign() << " | grade to execute: " << src.getGradeToExecute();
     return o;
 }
 

@@ -25,6 +25,8 @@ int main()
         std::cout << form << std::endl;
         b.signForm(form);
         std::cout << form << std::endl;            
+        b.signForm(form);
+        std::cout << form << std::endl;            
     }
     catch (std::exception & e)
     {

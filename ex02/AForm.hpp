@@ -44,6 +44,12 @@ class AForm
             public:
                 const char * what() const throw();
         };
+        class AlreadySigned : public std::exception
+        {
+            public:
+                const char * what() const throw();
+        };
+
 };
 
 
